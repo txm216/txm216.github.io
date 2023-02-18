@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bilder hochladen und teilen</title>
+  </head>
+  <body>
+    <h1>Bilder hochladen und teilen</h1>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Bild hochladen" name="submit">
+    </form>
+    <hr>
+    <h2>Bilder auf der Seite anzeigen</h2>
+    <?php
+      $dir = "uploads/";
+      $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+      foreach($images as $image) {
+        echo '<div>';
+        echo '<img src="' . $image . '" width="200">';
+        echo '<br><a href="' . $image . '" download>Herunterladen</a>';
+        echo '</div>';
+      }
+    ?>
+  </body>
+</html>
